@@ -7,7 +7,7 @@ Als Datengrundlage für die Analyse dient ein selbst gesammelter Datensatz von F
 
 ### Parteien
 ### Topics
-Die Zahl der Topics habe ich von 98 auf 13 reduziert. Der größte Teil der Reduktion fand im Bereich Wahlen statt. Hier habe ich die Fragen zu den einzelnen Wahlen pro Legislatur pro Parlament zu einem einzigen Topic zusammengefasst. Für eine genauere Aufschlüsselung, welche wie die einzelnen Topics zusammengefasst wurden, siehe pipeline_classification.ipnyb. 
+Die Zahl der Topics habe ich von 98 auf 13 reduziert. Der größte Teil der Reduktion fand im Bereich Wahlen statt. Hier habe ich die Fragen zu den einzelnen Wahlen pro Legislatur pro Parlament zu einem einzigen Topic zusammengefasst. Für eine genauere Aufschlüsselung, wie die einzelnen Topics zusammengefasst wurden, siehe [pipeline_classification.ipnyb](pipeline_classification.ipnyb). 
 
 Für die Verteilung der Fragen und Antworten auf die einzelnen Topics siehe **Abbildung X**.
 
