@@ -21,8 +21,11 @@ Die Zahl der Legislaturperioden der Parlamente habe ich auf die Bundes-, Landes-
 ![Balkendiagramm mit Zahl der Antworten nach Parlament](images/bar_parliament_count.png)
 Das Balkendiagramm zeigt die Zahl beantworteten Fragen nach Parlamenten. Mit weitem Abstand die meisten Fragen wurden im Bundestag gestellt und beantwortet mit 40255 Fragen, gefolgt von Hamburg mit 884 Fragen. Die wenigsten Fragen wurden in Bremen mit 83 Fragen und Mecklenburg-Vorpommern mit 72 Fragen gestellt und beantwortet.
 
-2282 sind per Hand klassifiziert
-
 ## Vorgehen
+Für eine Textklassifikation mittels Supervised Learning muss ein Teil des Datensatzes gelabelt sein. Ich habe ein randomisiertes Sample von 2282 Fällen (knapp 5% des gesamten Datensatzes) aus dem Datensatz gezogen und per Hand gelabelt. Dafür habe ich folgende Definitionen für die entsprechenden Label aufgestellt:
+- Antwort: Alle Antworten, die die gestellte(n) Fragen(n) vollumfänglich und konkret beantworten.
+- ausweichende Antwort: Alle Antworten, die nur ein Teil der Frage(n) oder keine Frage(n) beantworten, auf andere Kommunikationskanäle verweisen, wo die Frage erneut gestellt werden soll oder so oberflächlich auf die Frage eingehen, dass eine konkrete Antwort nicht deutlich wird.
 
 ## Ergebnisse
+
+### Vergleich händisch vs. automatisches labeln der antworten
