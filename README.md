@@ -22,10 +22,24 @@ Die Zahl der Legislaturperioden der Parlamente habe ich auf die Bundes-, Landes-
 Das Balkendiagramm zeigt die Zahl beantworteten Fragen nach Parlamenten. Mit weitem Abstand die meisten Fragen wurden im Bundestag gestellt und beantwortet mit 40255 Fragen, gefolgt von Hamburg mit 884 Fragen. Die wenigsten Fragen wurden in Bremen mit 83 Fragen und Mecklenburg-Vorpommern mit 72 Fragen gestellt und beantwortet.
 
 ## Vorgehen
-Für eine Textklassifikation mittels Supervised Learning muss ein Teil des Datensatzes gelabelt sein. Ich habe ein randomisiertes Sample von 2282 Fällen (knapp 5% des gesamten Datensatzes) aus dem Datensatz gezogen und per Hand gelabelt. Dafür habe ich folgende Definitionen für die entsprechenden Label aufgestellt:
+Für eine Textklassifikation mittels Supervised Learning muss ein Teil des Datensatzes gelabelt sein. Ich habe ein randomisiertes Sample von 2286 Fällen (knapp 5% des gesamten Datensatzes) aus dem Datensatz gezogen und per Hand gelabelt. Dafür habe ich folgende Definitionen für die entsprechenden Label aufgestellt:
 - Antwort: Alle Antworten, die die gestellte(n) Fragen(n) vollumfänglich und konkret beantworten.
 - ausweichende Antwort: Alle Antworten, die nur ein Teil der Frage(n) oder keine Frage(n) beantworten, auf andere Kommunikationskanäle verweisen, wo die Frage erneut gestellt werden soll oder so oberflächlich auf die Frage eingehen, dass eine konkrete Antwort nicht deutlich wird.
 
+Nach verschiedenen vorverarbeitenden Schritten sind noch 2281 Fälle im Sample enthalten. Das Sample wurde in ein Training- (80%), Test- (10%) und Validationsample (10%) aufgeteilt. Mit dem Trainigssample wurde ein Word-Embeddings-Modell trainiert. Hier wurde sich für fastText entschieden, da fastText insbesondere für morphologisch reichhaltige Sprachen, wie deutsch, gut geeignet ist. Mit dem Test- und Validationsample wird das trainierte Modell getestet und untersucht, wie gut es mit Daten klarkommt, die es vorher noch nie gesehen hat. Zudem wurden verschiedene Bag-of-words-Modelle trainiert und getestet, sich dann aber gegen den Bag-of-Words-Ansatz entschieden.
+
+Die Antworten werden verschieden Schritten des preprocessing und der Normalisierung unterzogen. Zunächst wird alles klein geschrieben, Stoppwörter und für diesen Datensatz häufige, aber sinnfreie Wörte werden entfernt, die Antworten werden lemmatisiert und Sonderzeichen entfernt.
+
 ## Ergebnisse
 
+### Händische Klassifkation
+![Balkendiagramm mit Zahl der Antworten nach händischem Label](images/bar_manual_label.png)
+Die händische Textklassifikation hat ergeben, dass 1412 (61,9%) der Antworten eine richtige Antwort nach der beschriebenen Definition sind 871 (38,1%) eine ausweichende Antwort.
+
+### Automatisierte Klassifikation (Word-Embeddings)
+Nach dem optimieren der Hyperparameter für die Word-Embeddings mit fastText, ergibt sich folgendes Modell:
+![Heatmap mit Ergebnissen des Modells für die Label, Precision und Recall](images/confusion_matrix_fasttext_results.png)
+Das für die automatisierte Klassifikation mit fastText trainierte Modell hat für das Label Antwort eine precision von 0.69 erreicht und einen recall von 0.92. Das bedeutet, 92% aller im Testdatensatz enthaltenen Fälle mit dem Label Antwort wurden erkannt. Von allen Fällen, die das Modell mit dem Label Antwort versehen hat, waren 69% korrekt. Für das Label ausweichende Antwort hat das Modell eine precision von 0.66 und einen recall von 0.28 erreicht. Dementsprechend wurden 28% aller Fälle, die das Label ausweichende Antwort haben, entdeckt und, wenn einem Fall das Label ausweichende Antwort gegeben hat, lag es damit zu 66% richtig. 
+
 ### Vergleich händisch vs. automatisches labeln der antworten
+
