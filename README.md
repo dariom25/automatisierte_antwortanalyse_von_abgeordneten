@@ -35,6 +35,7 @@ Die Antworten werden verschieden Schritten des preprocessing und der Normalisier
 ### Händische Klassifkation
 ![Balkendiagramm mit Zahl der Antworten nach händischem Label](images/bar_manual_label.png)
 Die händische Textklassifikation hat ergeben, dass 1412 (61,9%) der Antworten eine richtige Antwort nach der beschriebenen Definition sind 871 (38,1%) eine ausweichende Antwort.
+![Balkendiagramm mit Anteil der Antworten nach händischem Label](images/bar_manual_label_perc.png)
 
 ### Automatisierte Klassifikation (Word-Embeddings)
 Nach dem optimieren der Hyperparameter für die Word-Embeddings mit fastText, ergibt sich folgendes Modell:
@@ -43,3 +44,6 @@ Das für die automatisierte Klassifikation mit fastText trainierte Modell hat f�
 
 ### Vergleich händisch vs. automatisches labeln der antworten
 
+Insgesamt haben rund 83% der Antworten im automatisiert klassifizierten Datensatz das Label Antwort erhalten und rund 17% das Label ausweichende Antwort. Im händisch gelabelten Sample lag das Verhältnis bei rund 62% (Antwort) zu 38% (ausweichende Antwort). Damit zeigen sich deutliche Abweichungen zwischen in den beiden Datensätzen. Dies und schlechte Perfomance des trainierten Modells sollte bei der Interpretation der Ergebnisse beachtet werden.
+
+## Analyse
