@@ -1,58 +1,57 @@
 # Klassifikation von Antworten der Abgeordneten
 
-In diesem Projekt analysiere und klassifiziere ich die Antworten von Abgeordneten mit Daten von Abgeordnetenwatch.de mittels Supervised Learning. Ziel ist es herauszufinden, ob es bestimmte Fragetopics gibt, die die Abgeordneten besonders ungerne beantworten. Dabei steht nicht das Ignorieren von Fragen im Fokus, sondern das Antworten nur auf einzelne Fragen oder das Schreiben einer Antwort, die die konkrete Frage, aber nicht beantwortet.
+In diesem Projekt analysiere und klassifiziere ich die Antworten von Abgeordneten mithilfe von Daten von Abgeordnetenwatch.de mittels Supervised Learning. Ziel ist es herauszufinden, ob es bestimmte Fragethemen gibt, die Abgeordnete besonders ungern beantworten. Dabei steht nicht das Ignorieren von Fragen im Fokus, sondern das Antworten nur auf einzelne Fragen oder das Verfassen einer Antwort, die die konkrete Frage nicht beantwortet.
 
 ## Daten
-Als Datengrundlage für die Analyse dient ein selbst gesammelter Datensatz von Fragen, Antworten und weiteren Informationen. Die Daten wurden mittels Webscraping von der Seite Abgeordnetenwatch.de gesammelt. Die Daten wurden am 05.08.2024 gesammelt und umfassen alle Fragen, Antworten usw. der zu diesem Zeitpunkt gewählten Abgeordneten auf Bundes-, Länder- und EU-Ebene. Der Datensatz umfässt einen Zeitraum von Dezember 2004 bis August 2024, wobei die Daten vor ca. 2019 vergleichsweise dünn sind, da nur ein Teil der im Jahr 2024 gewählten Abgeordneten schon in früheren Legislaturperioden gewählt waren. In dem, um fehlende Antworten bereinigten, Datensatz sind 46614 Fragen enthalten.
+Als Datengrundlage für die Analyse dient ein selbst gesammelter Datensatz von Fragen, Antworten und weiteren Informationen. Die Daten wurden mittels Webscraping von der Seite Abgeordnetenwatch.de erhoben. Sie wurden am 05.08.2024 gesammelt und umfassen alle Fragen und Antworten der zu diesem Zeitpunkt gewählten Abgeordneten auf Bundes-, Länder- und EU-Ebene. Der Datensatz umfasst einen Zeitraum von Dezember 2004 bis August 2024, wobei die Daten vor ca. 2019 vergleichsweise dünn sind, da nur ein Teil der im Jahr 2024 gewählten Abgeordneten schon in früheren Legislaturperioden gewählt war. Im bereinigten Datensatz, bei dem fehlende Antworten entfernt wurden, sind 46.614 Fragen enthalten.
 
 ### Parteien
-![Balkendiagramm mit Zahl der Antworten nach Partei](images/bar_party_count.png)
-Das Balkendiagram zeigt die Zahl der beantworteten Fragen nach Partei. Die SPD hat mit 13332 Fragen die meisten Fragen gestellt und beantwortet, gefolgt von Bündnis90/Die Grünen mit 10635 Fragen. Die wenigsten Fragen gestellt und beantworten haben die EU-Parteien Bürger in Wut und FAMILIEN-PARTEI. Bei den Parteien ist zu beachten, dass einige nur auf EU-Ebene antreten und knapp zwei Monate bevor die Daten erhoben wurden die Europawahl 2024 durchgeführt wurde. Daher sind für diese Parteien die Zahlen der beantworteten Fragen sehr niedrig. Auf der anderen Seite ist auch zu sehen, dass die Regierungsparteien mit deutlichem Abstand am Meisten Fragen auf Abgeordnetenwatch.de erhalten und beantwortet haben.
+![Balkendiagramm mit der Zahl der Antworten nach Partei](images/bar_party_count.png)  
+Das Balkendiagramm zeigt die Zahl der beantworteten Fragen nach Partei. Die SPD hat mit 13.332 Fragen die meisten beantwortet, gefolgt von Bündnis 90/Die Grünen mit 10.635 Fragen. Die wenigsten Fragen beantwortet haben die EU-Parteien „Bürger in Wut“ und die „FAMILIEN-PARTEI“. Es ist zu beachten, dass einige Parteien nur auf EU-Ebene antreten und dass die Europawahl 2024 knapp zwei Monate vor der Datenerhebung stattfand. Daher sind für diese Parteien die Zahlen der beantworteten Fragen sehr niedrig. Zudem ist zu erkennen, dass die Regierungsparteien mit deutlichem Abstand die meisten Fragen auf Abgeordnetenwatch.de erhalten und beantwortet haben.
 
-### Topics
-Die Zahl der Topics habe ich von 98 auf 13 reduziert. Der größte Teil der Reduktion fand im Bereich Wahlen statt. Hier habe ich die Fragen zu den einzelnen Wahlen pro Legislatur pro Parlament zu einem einzigen Topic zusammengefasst. Für eine genauere Aufschlüsselung, wie die einzelnen Topics zusammengefasst wurden, siehe [exploratory_data_analysis.ipynb](exploratory_data_analysis.ipynb). 
+### Themen
+Die Zahl der Themen habe ich von 98 auf 13 reduziert. Der größte Teil der Reduktion fand im Bereich Wahlen statt. Hier habe ich die Fragen zu den einzelnen Wahlen pro Legislaturperiode und pro Parlament zu einem einzigen Thema zusammengefasst. Eine detaillierte Übersicht, wie die einzelnen Themen zusammengefasst wurden, findet sich in [exploratory_data_analysis.ipynb](exploratory_data_analysis.ipynb).  
 
-![Balkendiagramm mit Zahl der Antworten nach Topics](images/bar_topic_count.png)
-Das Balkendiagramm zeigt die Zahl der beantworteten Fragen nach Topics. Am häufigsten wurden Fragen zu den Topics "Politik und Parteien" mit 7095 Fragen und "Energie und Umwelt" mit 6773 Fragen gestellt und beantwortet. Die wenigsten Fragen wurden zu den Topics "Bildungs und Forschung" mit 860 Fragen und "Sport, Kultur, Tourismus" mit 424 Fragen gestellt und beantwortet.
+![Balkendiagramm mit der Zahl der Antworten nach Themen](images/bar_topic_count.png)  
+Das Balkendiagramm zeigt die Zahl der beantworteten Fragen nach Themen. Am häufigsten wurden Fragen zu den Themen „Politik und Parteien“ (7.095 Fragen) und „Energie und Umwelt“ (6.773 Fragen) gestellt und beantwortet. Die wenigsten Fragen wurden zu den Themen „Bildung und Forschung“ (860 Fragen) sowie „Sport, Kultur, Tourismus“ (424 Fragen) gestellt und beantwortet.
 
 ### Parlamente
-Die Zahl der Legislaturperioden der Parlamente habe ich auf die Bundes-, Landes- und EU-Parlamente reduziert, so dass nur noch 18 Parlamente existieren. Für einen genaueren Überblick siehe: [exploratory_data_analysis.ipynb](exploratory_data_analysis.ipynb)
+Die Anzahl der Parlamente habe ich auf die Bundes-, Landes- und EU-Parlamente reduziert, sodass nur noch 18 Parlamente berücksichtigt wurden. Eine detaillierte Übersicht findet sich in [exploratory_data_analysis.ipynb](exploratory_data_analysis.ipynb).  
 
-![Balkendiagramm mit Zahl der Antworten nach Parlament](images/bar_parliament_count.png)
-Das Balkendiagramm zeigt die Zahl beantworteten Fragen nach Parlamenten. Mit weitem Abstand die meisten Fragen wurden im Bundestag gestellt und beantwortet mit 40255 Fragen, gefolgt von Hamburg mit 884 Fragen. Die wenigsten Fragen wurden in Bremen mit 83 Fragen und Mecklenburg-Vorpommern mit 72 Fragen gestellt und beantwortet.
+![Balkendiagramm mit der Zahl der Antworten nach Parlamenten](images/bar_parliament_count.png)  
+Das Balkendiagramm zeigt die Zahl der beantworteten Fragen nach Parlamenten. Mit großem Abstand wurden die meisten Fragen im Bundestag gestellt und beantwortet (40.255 Fragen), gefolgt von Hamburg mit 884 Fragen. Die wenigsten Fragen wurden in Bremen (83 Fragen) und Mecklenburg-Vorpommern (72 Fragen) gestellt und beantwortet.
 
 ## Vorgehen
-Für eine Textklassifikation mittels Supervised Learning muss ein Teil des Datensatzes gelabelt sein. Ich habe ein randomisiertes Sample von 2286 Fällen (knapp 5% des gesamten Datensatzes) aus dem Datensatz gezogen und per Hand gelabelt. Dafür habe ich folgende Definitionen für die entsprechenden Label aufgestellt:
-- Antwort: Alle Antworten, die die gestellte(n) Fragen(n) vollumfänglich und konkret beantworten.
-- ausweichende Antwort: Alle Antworten, die nur ein Teil der Frage(n) oder keine Frage(n) beantworten, auf andere Kommunikationskanäle verweisen, wo die Frage erneut gestellt werden soll oder so oberflächlich auf die Frage eingehen, dass eine konkrete Antwort nicht deutlich wird.
+Für eine Textklassifikation mittels Supervised Learning muss ein Teil des Datensatzes gelabelt sein. Ich habe ein randomisiertes Sample von 2.286 Fällen (knapp 5 % des gesamten Datensatzes) gezogen und per Hand gelabelt. Dafür habe ich folgende Definitionen für die entsprechenden Labels aufgestellt:
+- **Antwort:** Alle Antworten, die die gestellte(n) Frage(n) vollumfänglich und konkret beantworten.
+- **Ausweichende Antwort:** Alle Antworten, die nur einen Teil der Frage(n) oder keine Frage(n) beantworten, auf andere Kommunikationskanäle verweisen oder so oberflächlich auf die Frage eingehen, dass eine konkrete Antwort nicht deutlich wird.
 
-Nach verschiedenen vorverarbeitenden Schritten sind noch 2281 Fälle im Sample enthalten. Das Sample wurde in ein Training- (80%), Test- (10%) und Validationsample (10%) aufgeteilt. Mit dem Trainigssample wurde ein Word-Embeddings-Modell trainiert. Hier wurde sich für fastText entschieden, da fastText insbesondere für morphologisch reichhaltige Sprachen, wie deutsch, gut geeignet ist. Mit dem Test- und Validationsample wird das trainierte Modell getestet und untersucht, wie gut es mit Daten klarkommt, die es vorher noch nie gesehen hat. Zudem wurden verschiedene Bag-of-words-Modelle trainiert und getestet, sich dann aber gegen den Bag-of-Words-Ansatz entschieden.
+Nach verschiedenen Vorverarbeitungsschritten enthält das Sample noch 2.281 Fälle. Das Sample wurde in ein Trainings- (80 %), Test- (10 %) und Validierungs-Sample (10 %) aufgeteilt. Mit dem Trainingssample wurde ein Word-Embeddings-Modell trainiert. Hier fiel die Wahl auf fastText, da dieses Modell besonders für morphologisch reichhaltige Sprachen wie Deutsch geeignet ist. Mit dem Test- und Validierungssample wurde das trainierte Modell getestet und untersucht, wie gut es mit unbekannten Daten klarkommt. Zusätzlich wurden verschiedene Bag-of-Words-Modelle trainiert und getestet, jedoch letztlich zugunsten von fastText verworfen.
 
-Die Antworten werden verschieden Schritten des preprocessing und der Normalisierung unterzogen. Zunächst wird alles klein geschrieben, Stoppwörter und für diesen Datensatz häufige, aber sinnfreie Wörte werden entfernt, die Antworten werden lemmatisiert und Sonderzeichen entfernt.
+Die Antworten wurden verschiedenen Preprocessing- und Normalisierungsschritten unterzogen: Zunächst wurde alles kleingeschrieben, Stoppwörter sowie häufig vorkommende, aber sinnfreie Wörter entfernt, die Antworten lemmatisiert und Sonderzeichen eliminiert.
 
 ## Ergebnisse
 
-### Händische Klassifkation
-![Balkendiagramm mit Zahl der Antworten nach händischem Label](images/bar_manual_label.png)
-Die händische Textklassifikation hat ergeben, dass 1412 (61,9%) der Antworten eine richtige Antwort nach der beschriebenen Definition sind 871 (38,1%) eine ausweichende Antwort.
-![Balkendiagramm mit Anteil der Antworten nach händischem Label](images/bar_manual_label_perc.png)
+### Händische Klassifikation
+![Balkendiagramm mit der Zahl der Antworten nach händischem Label](images/bar_manual_label.png)  
+Die händische Textklassifikation ergab, dass 1.412 (61,9 %) der Antworten eine richtige Antwort gemäß der Definition waren, während 871 (38,1 %) ausweichend waren.
 
 ### Automatisierte Klassifikation (Word-Embeddings)
-Nach dem optimieren der Hyperparameter für die Word-Embeddings mit fastText, ergibt sich folgendes Modell:
-![Heatmap mit Ergebnissen des Modells für die Label, Precision und Recall](images/confusion_matrix_fasttext_results.png)
-Das für die automatisierte Klassifikation mit fastText trainierte Modell hat für das Label Antwort eine precision von 0.69 erreicht und einen recall von 0.92. Das bedeutet, 92% aller im Testdatensatz enthaltenen Fälle mit dem Label Antwort wurden erkannt. Von allen Fällen, die das Modell mit dem Label Antwort versehen hat, waren 69% korrekt. Für das Label ausweichende Antwort hat das Modell eine precision von 0.66 und einen recall von 0.28 erreicht. Dementsprechend wurden 28% aller Fälle, die das Label ausweichende Antwort haben, entdeckt und, wenn einem Fall das Label ausweichende Antwort gegeben hat, lag es damit zu 66% richtig. 
+Nach der Optimierung der Hyperparameter für das Word-Embeddings-Modell mit fastText ergab sich folgendes Ergebnis:  
 
-### Vergleich händisch vs. automatisches labeln der antworten
+![Heatmap mit den Ergebnissen des Modells (Label, Precision und Recall)](images/confusion_matrix_fasttext_results.png)  
+Das Modell erzielte für das Label „Antwort“ eine Precision von 0,69 und einen Recall von 0,92. Das bedeutet, dass 92 % der im Testdatensatz enthaltenen Fälle mit dem Label „Antwort“ erkannt wurden. Von allen Fällen, die das Modell mit dem Label „Antwort“ versehen hat, waren 69 % korrekt. Für das Label „ausweichende Antwort“ erreichte das Modell eine Precision von 0,66 und einen Recall von 0,28.
 
-Insgesamt haben rund 83% der Antworten im automatisiert klassifizierten Datensatz das Label Antwort erhalten und rund 17% das Label ausweichende Antwort. Im händisch gelabelten Sample lag das Verhältnis bei rund 62% (Antwort) zu 38% (ausweichende Antwort). Damit zeigen sich deutliche Abweichungen zwischen in den beiden Datensätzen. Dies und schlechte Perfomance des trainierten Modells sollte bei der Interpretation der Ergebnisse beachtet werden.
+### Vergleich: Händisches vs. automatisches Labeln
+Insgesamt erhielten rund 83 % der Antworten im automatisiert klassifizierten Datensatz das Label „Antwort“ und 17 % das Label „ausweichende Antwort“. Im händisch gelabelten Sample lag das Verhältnis bei 62 % („Antwort“) zu 38 % („ausweichende Antwort“). Die Abweichungen und die schlechte Performance des Modells sollten bei der Interpretation der Ergebnisse berücksichtigt werden.
 
-### Topics und unbeantwortete Fragen
-Um die Frage zu beantworten, ob es Themen gibt, die gewählte Abgeordnete nicht gerne beantworten werden zunächst die Topics nach dem Anteil der ausweichend beantworteten Fragen geplottet.
-![Balkendiagramm der Topics nach Label](images/bar_proportion_evasive_answer.png)
+### Themen und unbeantwortete Fragen
+Um die Frage zu beantworten, ob es Themen gibt, die Abgeordnete ungern beantworten, wurden die Themen nach dem Anteil der ausweichenden Antworten aufgeschlüsselt:  
 
-Am häufigsten wurden Fragen zum Thema Sport, Kultur und Tourismus mit 21.3% ausweichenden Antworten nicht beantwortet. 19.4% der Fragen zum Topic Digitales wurden nicht beantwortet, gefolgt vom Topic Gesundheit und Ernährung mit 19.2%. Die wenigsten Fragen wurden mit 10.3% beim Topic Migration und Aufenthaltsrecht nicht beantwortet.
+![Balkendiagramm der Themen nach Labels](images/bar_proportion_evasive_answer.png)  
+Am häufigsten wurden Fragen zu „Sport, Kultur und Tourismus“ mit 21,3 % ausweichend beantwortet. Es folgen „Digitales“ (19,4 %) und „Gesundheit und Ernährung“ (19,2 %). Die wenigsten ausweichenden Antworten gab es beim Thema „Migration und Aufenthaltsrecht“ (10,3 %).
 
 ## Diskussion
-Die im Vergleich niedrigeren Antwortraten beim Thema Sport, Kultur und Tourismus könnten daher kommen, dass das Thema von den gewählten Abgeordneten nicht als so wichtig oder relevant erachtet wird. Umgekehrt gab es insbesondere seit 2015 immer wieder aufflammende geführte Debatten über vermeintliche Migrationskrisen, was beeinflusst haben könnte, dass gewählte Abgeordnete und ihre Teams Fragen zum Thema Migration und Aufenthaltsrecht besonders ausführlich beantworten wollen. Insbesondere, da in dieser Kategorie auch vielfach Fragen zum eigenen, individuellen Aufenthaltsrecht und -status gestellt werden.
+Die vergleichsweise niedrigen Antwortraten beim Thema „Sport, Kultur und Tourismus“ könnten darauf hindeuten, dass das Thema von Abgeordneten als weniger relevant erachtet wird. Umgekehrt könnten die intensiven Debatten über Migration seit 2015 dazu beigetragen haben, dass Abgeordnete Fragen zu diesem Thema besonders ausführlich beantworten wollten – insbesondere, da in dieser Kategorie häufig Fragen zu individuellen Aufenthaltsrechten gestellt wurden.
 
-Die Ergebnisse und Interpretationen sollten mit besonderer Vorsicht betrachtet werden, da es eine Schieflage in den Daten gibt und das trainierte Modell nicht besonders gut performed hat.
+Die Ergebnisse sollten mit Vorsicht interpretiert werden, da die Datenlage unausgewogen ist und das trainierte Modell keine besonders hohe Performance erzielt hat.
