@@ -46,4 +46,13 @@ Das für die automatisierte Klassifikation mit fastText trainierte Modell hat f�
 
 Insgesamt haben rund 83% der Antworten im automatisiert klassifizierten Datensatz das Label Antwort erhalten und rund 17% das Label ausweichende Antwort. Im händisch gelabelten Sample lag das Verhältnis bei rund 62% (Antwort) zu 38% (ausweichende Antwort). Damit zeigen sich deutliche Abweichungen zwischen in den beiden Datensätzen. Dies und schlechte Perfomance des trainierten Modells sollte bei der Interpretation der Ergebnisse beachtet werden.
 
-## Analyse
+### Topics und unbeantwortete Fragen
+Um die Frage zu beantworten, ob es Themen gibt, die gewählte Abgeordnete nicht gerne beantworten werden zunächst die Topics nach dem Anteil der ausweichend beantworteten Fragen geplottet.
+![Balkendiagramm der Topics nach Label](images/bar_proportion_evasive_answer.png)
+
+Am häufigsten wurden Fragen zum Thema Sport, Kultur und Tourismus mit 21.3% ausweichenden Antworten nicht beantwortet. 19.4% der Fragen zum Topic Digitales wurden nicht beantwortet, gefolgt vom Topic Gesundheit und Ernährung mit 19.2%. Die wenigsten Fragen wurden mit 10.3% beim Topic Migration und Aufenthaltsrecht nicht beantwortet.
+
+## Diskussion
+Die im Vergleich niedrigeren Antwortraten beim Thema Sport, Kultur und Tourismus könnten daher kommen, dass das Thema von den gewählten Abgeordneten nicht als so wichtig oder relevant erachtet wird. Umgekehrt gab es insbesondere seit 2015 immer wieder aufflammende geführte Debatten über vermeintliche Migrationskrisen, was beeinflusst haben könnte, dass gewählte Abgeordnete und ihre Teams Fragen zum Thema Migration und Aufenthaltsrecht besonders ausführlich beantworten wollen. Insbesondere, da in dieser Kategorie auch vielfach Fragen zum eigenen, individuellen Aufenthaltsrecht und -status gestellt werden.
+
+Die Ergebnisse und Interpretationen sollten mit besonderer Vorsicht betrachtet werden, da es eine Schieflage in den Daten gibt und das trainierte Modell nicht besonders gut performed hat.
